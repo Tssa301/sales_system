@@ -4,20 +4,36 @@ import './styles.css';
 
 const initialData = [
   {
+    x: '2021/09/01',
+    y: 300
+  },
+  {
+    x: '2021/10/01',
+    y: 430
+  },
+  {
+    x: '2021/11/01',
+    y: 600
+  },
+  {
+    x: '2021/12/01',
+    y: 1000
+  },
+  {
     x: '2022/01/01',
-    y: 250
+    y: 550
   },
   {
     x: '2022/02/01',
-    y: 380
+    y: 950
   },
   {
     x: '2022/03/01',
-    y: 450
+    y: 870
   },
   {
     x: '2022/04/01',
-    y: 600
+    y: 1200
   }
 ];
 
@@ -26,7 +42,7 @@ function SalesByDate() {
     <div className="sales-by-date-container base-card">
       <div>
         <h4 className="sales-by-date-title">Sales evolution</h4>
-        <span className="sales-by-date-period">01/04/2022 to 30/04/2022</span>
+        <span className="sales-by-date-period">01/09/2021 to 30/04/2022</span>
       </div>
       <div className="sales-by-date-data">
         <div className="sales-by-date-quantity-container">
