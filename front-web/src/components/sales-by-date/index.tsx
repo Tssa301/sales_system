@@ -46,7 +46,7 @@ function SalesByDate() {
       </div>
       <div className="sales-by-date-data">
         <div className="sales-by-date-quantity-container">
-          <h2 className="sales-by-date-quantity">464.988,00</h2>
+          <h2 className="sales-by-date-quantity">$ 464.988,00</h2>
           <span className="sales-by-date-quantity-label">Sales period</span>
           <span className="sales-by-date-quantity-description">
             The chart shows sales across all stories
