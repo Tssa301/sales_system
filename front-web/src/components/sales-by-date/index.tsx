@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { ChartSeriesData, SalesByDate } from '../../types';
-import { formatPrice } from '../../utils/formatters';
+import { ChartSeriesData, FilterData, SalesByDate } from '../../types';
+import { formatDate, formatPrice } from '../../utils/formatters';
 import { makeRequest } from '../../utils/request';
 import { buildChartSeries, chartOptions, sumSalesByDate } from './helpers';
 import './styles.css';
 
-function SalesByDateComponent() {
+type Props = {
+  filterData?: FilterData;
+};
+
+function SalesByDateComponent({ filterData }: Props) {
   const [chartSeries, setChartSeries] = useState<ChartSeriesData[]>([]);
   const [totalSum, setTotalSum] = useState(0);
 
@@ -18,6 +22,9 @@ function SalesByDateComponent() {
         setChartSeries(newChartSeries);
         const newTotalSum = sumSalesByDate(response.data);
         setTotalSum(newTotalSum);
+      })
+      .catch(() => {
+        console.error('Error to fetch sales by date');
       });
   }, []);
 
@@ -25,7 +32,11 @@ function SalesByDateComponent() {
     <div className="sales-by-date-container base-card">
       <div>
         <h4 className="sales-by-date-title">Sales evolution</h4>
-        <span className="sales-by-date-period">01/09/2021 to 30/04/2022</span>
+        {filterData?.dates && (
+          <span className="sales-by-date-period">
+            {formatDate(filterData?.dates?.[0])} to {formatDate(filterData?.dates?.[1])}
+          </span>
+        )}
       </div>
       <div className="sales-by-date-data">
         <div className="sales-by-date-quantity-container">
